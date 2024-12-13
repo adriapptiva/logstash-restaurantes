@@ -1,0 +1,17 @@
+{
+  "name": "node-elk-example",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node src/index.js",
+    "sync-mongo": "node src/sync-mongo.js",
+    "sync-elastic": "node src/elastic-sync.js"
+  },
+  "dependencies": {
+    "winston": "^3.11.0",
+    "express": "^4.18.2",
+    "mongodb": "^6.3.0",
+    "dotenv": "^16.3.1",
+    "@elastic/elasticsearch": "^8.11.0"
+  }
+}

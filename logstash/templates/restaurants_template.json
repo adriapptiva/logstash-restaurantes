@@ -1,0 +1,40 @@
+{
+  "index_patterns": ["restaurantes*"],
+  "template": {
+    "settings": {
+      "number_of_shards": 1,
+      "number_of_replicas": 0
+    },
+    "mappings": {
+      "properties": {
+        "business_id": { "type": "keyword" },
+        "name": { 
+          "type": "text",
+          "fields": {
+            "keyword": { "type": "keyword" }
+          }
+        },
+        "categorias": { "type": "keyword" },
+        "rating": { "type": "float" },
+        "review_count": { "type": "integer" },
+        "location": { "type": "geo_point" },
+        "direccion": { "type": "text" },
+        "codigopostal": { "type": "keyword" },
+        "localidad": { "type": "keyword" },
+        "provincia": { "type": "keyword" },
+        "telefono": { "type": "keyword" },
+        "opcionesServicio": { "type": "keyword" },
+        "reviews": {
+          "type": "nested",
+          "properties": {
+            "author": { "type": "keyword" },
+            "date": { "type": "text" },
+            "text": { "type": "text" },
+            "rating": { "type": "integer" }
+          }
+        },
+        "dateSaved": { "type": "date" }
+      }
+    }
+  }
+}
