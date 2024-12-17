@@ -1,0 +1,17 @@
+FROM docker.elastic.co/kibana/kibana:8.11.1
+
+# Cambiar al usuario root temporalmente para copiar archivos y modificar permisos
+USER root
+
+# Copiar el script y los saved objects
+COPY ./data/init_script.sh /tmp/init_script.sh
+COPY ./data/export.ndjson /tmp/export.ndjson
+
+# Asegurar permisos de ejecución
+RUN chmod +x /tmp/init_script.sh
+
+# Volver al usuario predeterminado de Kibana
+USER kibana
+
+# Ejecutar Kibana y el script de inicialización
+ENTRYPOINT ["/bin/bash", "-c", "/usr/local/bin/kibana-docker & /tmp/init_script.sh"]
